@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<title>会员注册</title>
+	<style>
+		.main{
+			width:800px; height:400px;
+			border:1px red solid;
+			margin:0px auto;
+		}
+		form{
+			margin-top:70px;margin-left:240px;
+			line-height:30px;
+		}</style>
+</head>
+
+<body>
+	<div th:replace="../templates/public/header::commonHeader"/>
+    <div class="main">  <!-- 注册页面主体 -->
+    	<form method="post" action="register">
+			会员名称：<input type="text" name="username"/><br/>
+			会员真名：<input type="text" name="realname"/><br/>
+			会员密码：<input type="password" name="password"/><br/>
+			电话号码：<input type="text" name="mobile"/><br/>
+			年&nbsp;&nbsp;龄：<input type="text" name="age"/><br/>
+			<input type="submit" value="注册"/></form></div>
+	<div th:replace="../templates/public/footer::commonFooter"/>
+</body>
+</html>

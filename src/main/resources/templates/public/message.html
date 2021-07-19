@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>提示信息页面</title>
+<style>
+	.main{
+		width:800px; height:300px;
+		border:1px red solid;
+        margin:0px auto;
+        text-align:center;
+	}
+	.content{
+        margin-top:100px;
+     }
+</style>
+</head>
+<body>
+	 <div th:replace="../templates/public/header::commonHeader"/>
+	 <div class="main">
+    	<div class="content" th:text="${message}"></div>
+         <br><a href="/index">返回前台主页</a>
+	</div>
+
+     <div th:replace="../templates/public/footer::commonFooter"/>
+</body>
+</html>

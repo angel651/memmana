@@ -1,0 +1,80 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+<div class="header" th:fragment="commonHeader">  <!--定义页面头部公共部分-->
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .header {
+            width: 800px;
+            height: 80px;
+            margin: 0 auto; /*水平居中*/
+            background-color: #CC6;
+        }
+        .row1 {
+            width: 800px;
+            height: 50px;
+            text-align: center;
+            overflow: hidden; /*对溢出部分隐藏，但仅对静态文本*/
+        }
+        .row11 {
+            width: 170px;
+            height: 50px;
+            line-height: 50px; /*行高*/
+            float: left;
+            overflow: hidden;
+        }
+        .row12 {
+            width: 480px;
+            line-height: 50px;
+            font-size: 21px;
+            font-family: "方正舒体";
+            filter: shadow(dirction=45, color=yellow);
+            float: left;
+        }
+        .row13 {
+            width: 150px;
+            height: 50px;
+            line-height: 50px; /*行高*/
+            float: left;
+        }
+        .row2 { /*菜单*/
+            width: 800px;
+            height: 30px;
+            line-height: 30px;
+            padding-left: 150px;
+        }
+        .row2 ul li { /*使用空格建立的上下文样式*/
+            list-style: none; /*取消项目符号*/
+            width: 120px;
+            float: left; /*并排列表项*/
+        }
+        .row2 ul li a {
+            font-size: 20px;
+            color: #666666; /*浅灰色*/
+            text-decoration: none;
+        }
+        .row2 ul li a:hover {
+            color: #FF0000; /*红色*/
+            text-decoration: underline;
+        }
+    </style>
+    <div class="row1">
+        <div class="row11"><span id="dtps">date and time</span></div>
+        <script>
+            window.setInterval("dtps.innerText=new Date().toLocaleString()", 1);
+        </script>
+        <div class="row12">会员管理系统(Spring Boot)</div>
+        <div th:if="${session.username==null}" class="row13">尚未登录！</div>
+        <div th:if="${session.username!=null}" class="row13">欢迎您：<span style="color:red" th:text="${session.username}"/></div>
+    </div>
+    <div class="row2">
+        <ul>
+            <li><a href="/User/mLogin">会员登录</a></li>
+            <li><a href="/User/mRegister">会员注册</a></li>
+            <li><a href="/User/mUpdate">信息修改</a></li>
+            <li><a href="/User/logout">会员登出</a></li>
+        </ul>
+    </div>
+</div>

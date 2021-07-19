@@ -1,0 +1,23 @@
+.subject{
+	font-size:30px;
+	color: red;
+	text-align: center;
+}
+.bt{
+	font-size:25px;
+	color:green;
+	text-align: center;
+}
+
+.zw{
+	font-size:15px;
+	color: black;
+	line-height:25px;
+}
+.key{
+	color: red;
+}
+li{
+	line-height:25px;
+}
+

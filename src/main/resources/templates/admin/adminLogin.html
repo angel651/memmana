@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>管理员登录</title>
+		<style>
+			.main{
+				width:598px; height:300px;
+				border:1px red solid;
+	            margin:0px auto;
+	            padding-top:200px;padding-left:200px;
+				line-height:35px;
+			}
+		</style>
+	</head>
+	<body>
+	<div th:replace="../templates/public/header::commonHeader"/>
+		<div class="main">
+			请输入管理员密码：
+			<input type="password" id="pwd" value="admin">
+			<input id="submit" type="button" value="提交"></div><!-- 并非表单提交 -->
+	<div th:replace="../templates/public/footer::commonFooter"/>
+	</body>
+</html>
+
+<script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#submit").click(function(){
+			var pwd = $("#pwd").val();
+			//alert(pwd);//测试
+			$.ajax({ 
+				url: "adminLogin", //请求控制器方法
+				data:{
+					pw:pwd
+				},
+				success: function(data){
+					if(data.success){
+						location.href='adminIndex';  //请求控制器方法
+					}else{
+						alert(data.msg);   //不会新型窗口，警告信息暂时盖住登录界面（单击确定后消失）
+					}
+					console.log(data);  //适用非IE内核的浏览器，否则要用方法window.alert()						
+				}
+			});
+		});
+	});
+</script>

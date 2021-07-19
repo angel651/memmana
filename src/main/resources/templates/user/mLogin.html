@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>会员登录</title>
+    <style>
+        .main {
+            width: 800px;
+            height: 300px;
+            border: 1px red solid;
+            margin: 0px auto;
+        }
+        form {
+            margin-top: 100px;
+            margin-left: 240px;
+            line-height: 35px;
+        }
+    </style>
+</head>
+
+<body>
+<div th:replace="../templates/public/header::commonHeader"/>
+<div class="main">
+    <form method="post" action="login">   <!-- 请求控制器方法User/login -->
+        会员名称：<input type="text" name="username"><br/>
+        会员密码：<input type="password" name="password"><br/>
+        <input type="submit" value="登录"/></form>
+</div>
+<div th:replace="../templates/public/footer::commonFooter"/>
+</body>
+</html>

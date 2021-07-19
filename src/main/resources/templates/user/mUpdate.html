@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"/>
+	<title>会员信息修改</title>
+	<style>
+		.main{
+			width:800px; height:300px;
+			border:1px red solid;
+			margin:0px auto;
+		}
+		form{
+			margin-top:70px;margin-left:240px;
+			line-height:30px;
+		}</style>
+</head>
+<body>
+	<div th:replace="../templates/public/header::commonHeader"/>
+		   <div class="main">  
+		       <form method="post" action="updateMem">
+					会员密码：<input type="password" name="password" th:value="${user.password}"/> <br/>
+					会员真名：<input type="text" name="realname" th:value="${user.realname }"/> <br/>
+					手机号码：<input type="text" name="mobile" th:value="${user.mobile }"/> <br/>
+					会员年龄：<input type="text" name="age" th:value="${user.age }"/> <br/>
+					<input type="submit" value="提交"/>
+				</form>
+			</div>
+	<div th:replace="../templates/public/footer::commonFooter"/>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html  xmlns:th="http://www.thymeleaf.org" ><!--添加此命名空间，以便使用thymeleaf模板标签时有自动提示功能，并不影响运行-->
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/wzys.css" type="text/css">
+<title>会员信息管理系统</title>
+<style>
+    *{
+        margin: 0;padding: 0;
+        box-sizing:border-box;
+    }
+    .main {
+        width: 800px;
+        height: 500px;
+        margin: 0px auto; /*水平居中*/
+    }
+    .left {
+        width: 250px;
+        height: 500px;
+        float: left;
+        overflow: hidden;
+        background: url("/images/bg.jpg"); /*不用管红色波浪线*/
+    }
+    .left ul {
+        list-style: none; /*取消项目符号*/
+        padding-left: 25px;
+    }
+    .left li {
+        line-height: 35px; /*列表文字行高*/
+    }
+    .right {
+        width: 550px;
+        height: 500px;
+        float: left;
+    }
+</style>
+
+<body>
+<div th:replace="../templates/public/header::commonHeader"/><!--加载页面公共头部-->
+<div class="main">
+    <div class="left"><br>
+        <div class="bt">技术文档</div>
+        <ul>
+            <!--Thymeleaf模板标签用法：将Thymeleaf模板标签作为HTML相关标签的属性-->
+            <li  th:each="row:${newsList}">
+                <!--对HTML相关标签的属性渲染（前缀th:）-->
+                <a th:href="${row.getContentPage()}" th:text="${row.getContentTitle()}" target="iframeName"/>
+            </li>
+        </ul>
+    </div>
+    <div class="right">
+        <!--下面的页内框架标签不可自闭。否则，响应底部的显示。-->
+        <iframe name="iframeName" width="550px" height="500px" src="/pages/index0.html" frameborder="no"></iframe>
+    </div>
+</div>
+<div th:replace="../templates/public/footer::commonFooter"/><!--加载页面公共底部-->
+</body>
+</html>

@@ -1,0 +1,70 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+	<title>后台管理主页</title>
+	<style type="text/css">
+	  	.main{
+			width:800px;height:500px;
+		  	margin:0 auto; /*水平居中*/
+	  	}
+	  	.row1{
+	  		width:800px;height:40px;
+	  		font-size:35px;
+	  		text-align:center;
+	  		background-color:#CC6;
+	  	}
+	  	.row2{
+	  		width:800px;height:460px;
+	  		/*border:1px red solid;*/
+	  	}
+	  	.row2_left{
+		  	width: 250px;height: 460px;
+		  	float: left;
+		  	background:url(/images/bg.jpg);
+		  }
+		  .row2_left ul{
+		  	padding-left:15px; //
+		  }
+		.row2_right{
+			  width: 550px;height: 460px;
+			  float: left;
+			  margin-top:10px;			  
+			  background:url(/images/bg2.jpg) repeat-x;
+		  }
+  	</style>
+   	<link rel="stylesheet" href="/css/adminIndex.css" type="text/css"/>
+	  <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+<body>
+
+<!--使用jQuery的自定义脚本-->
+<script type="text/javascript">
+	//$(function(){   //按如下标准写法理解
+	$(document).ready(function() {   //标准写法
+		//jQuery用法：获取应用了点样式.subNav的DOM元素（对象）
+		$(".subNav").click(function(){
+			var temp=$(this).next(".navContent"); //当前主菜单项的子菜单
+			temp.slideToggle(500);  //当前主菜单项的子菜单卷起或展开
+			temp.siblings(".navContent").slideUp("fast"); //同胞元素向上卷起
+		});
+	});
+</script>
+
+	<div class="main">
+		<div class="row1">会员管理后台</div>
+		<div class="row2">
+			<div class="row2_left">
+				 <div class="subNavBox">   <!-- 折叠菜单开始 -->	
+	    			<div class="subNav">会员管理</div>
+	    			<ul class="navContent" style="display:block">  <!--显示列表项-->
+						<li ><a href="memInfo" target="kj">会员信息</a></li><!-- 不是请求jsp页面 -->
+						<li><a href="memDelete" target="kj">会员删除</a></li></ul>
+					<div class="subNav">系统</div>
+					<ul class="navContent">
+						<li><a href="/User/logout">登出返回前台</a></li>
+						<li><a href="#" onclick="window.open(location,'_self').close();">退出管理系统</a></li></ul>	 </div>	<!-- 折叠菜单结束 -->		</div>
+			<div class="row2_right">
+				<iframe width="550" height="460" src="/pages/adminIndex0.html" name="kj"></iframe>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
